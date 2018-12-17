@@ -36,7 +36,7 @@ export class AdminPanelComponent implements OnInit {
     this.technicianId = this.auth.currentUser().technicianId;
     this.technicianName = this.auth.currentUser().technicianName;
 
-      const ws = new WebSocket('ws://ec2-52-202-126-186.compute-1.amazonaws.com:8080/update_admin_view/');
+      const ws = new WebSocket('ws://ec2-10-192-49-9.compute-1.amazonaws.com:8080/update_admin_view/');
       ws.onopen = () => console.warn('Listening to WebSocket...');
       ws.onclose = () =>  console.log('WS closed...');
         // window.location.reload()
