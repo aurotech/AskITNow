@@ -1,0 +1,153 @@
+.heading{
+  padding: 15px 15px 0px 5px;
+  text-align: center;
+  color: #026880;
+  font-size: 25px;
+  font-weight: 700;
+
+}
+.content{
+  width: 80%;
+  /*text-align: center;*/
+  margin: 0 auto;
+}
+
+.content-options{
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-round{
+  display: block;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 8px;
+  font-weight: bold;
+  margin: 0 auto;
+  color: #fff;
+  background-color: #026880;
+}
+
+.timer-head{
+  background: lightgray;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 6px -6px black;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+.btn-group{
+  /*width: 26%;*/
+  display: block;
+  margin: 0 auto;
+
+}
+
+.bth-group--item{
+  /*width: 100%;*/
+  font-size: 20px;
+}
+
+
+.margin-bottom{
+  margin-bottom: 15px;
+}
+
+
+.text-middle{
+  font-size: 20px;
+  text-align: center;
+}
+
+.dropdown-item:active{
+  background: #026880;
+  color: #fff;
+}
+
+.dropdown-item:active span{
+  color: #fff;
+}
+
+.table{
+  /*width: 60%;*/
+  margin: 0 auto 15px auto;
+  text-align: center;
+  display: block;
+}
+
+tbody{
+  background-color: #fff;
+}
+
+.thead{
+  background-color: #026880;
+  color: #fff;
+}
+
+.pull-right{
+  display: block;
+  margin: 0 auto;
+}
+
+th{
+  padding:1.2rem;
+  width: 8%;
+}
+
+
+.close:active #myDIV{
+  display: none;
+}
+
+
+.btn-margin{
+  margin-left: 15px;
+  margin-bottom:3px;
+}
+
+.btn-trash{
+  font-size: 24px;
+  padding: 0 27px;
+  color: #fff;
+  background-color: darkred;
+  margin: 0;
+}
+
+.btn-trash:active{
+  outline: none !important;
+}
+
+.btn-trash:focus{
+  outline: none !important;
+}
+
+.no-padding{
+  padding: 0;
+}
+
+.admin-action{
+  cursor: pointer;
+}
+
+
+@media only screen and (max-width: 300px){
+  .table{
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .btn-margin{
+    margin-left: 15px;
+    margin-bottom:3px;
+  }
+}
+
+
+@media only screen and (max-width: 1200px){
+  .table{
+    width: 100%;
+    margin: 0 auto;
+  }
+}

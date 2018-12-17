@@ -1,0 +1,114 @@
+.heading{
+  padding: 15px 15px 0px 5px;
+  text-align: center;
+  color: #026880;
+  font-size: 22px;
+  font-weight: 600;
+
+}
+.content{
+  width: 40%;
+  /*text-align: center;*/
+  color: #026880;
+  margin: 0 auto;
+}
+
+
+.form-group, form{
+  color: #026880;
+  margin: 5px;
+}
+
+button,a{
+  width: 48%;
+  color: #fff;
+  margin-left: 5px;
+}
+
+
+button a{
+  text-decoration: none;
+  color:#fff;
+}
+
+.btn-gray {
+
+  background-color: #777777;
+}
+
+.btn-block{
+  padding: 5px;
+  display: flex;
+}
+
+.btn-gray:hover{
+  background-color: #9b9d9d;
+}
+
+.btn-blue{
+  background-color: #026880;
+}
+
+.btn-a{
+  color: #fff;
+  background-color: #026880;;
+}
+
+.btn-blue:hover{
+  background-color: #0287a6;
+}
+
+
+
+
+@media only screen and (max-width: 780px) {
+
+  .content{
+    width: 80%;
+    /*text-align: center;*/
+    color: #026880;
+    margin: 0 auto;
+  }
+
+  button,a{
+    width: 45%;
+    color: #fff;
+    margin-left: 5px;
+  }
+}
+
+
+@media only screen and (max-width: 900px) {
+
+  .content{
+    width: 80%;
+    /*text-align: center;*/
+    color: #026880;
+    margin: 0 auto;
+  }
+
+  button,a{
+    margin-top: 20px;
+    width: 48%;
+    color: #fff;
+    margin-left: 5px;
+  }
+}
+
+
+@media only screen and (max-width: 1200px) {
+
+  .content{
+    width: 90%;
+    /*text-align: center;*/
+    color: #026880;
+    margin: 0 auto;
+  }
+
+  button,a{
+    margin-top: 20px;
+    width: 49%;
+    color: #fff;
+    margin-left: 5px;
+  }
+}

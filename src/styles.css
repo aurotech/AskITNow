@@ -1,0 +1,45 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+body{
+  height: 100vh;
+  background-color: #EDEFEF;
+
+}
+
+
+*:focus {
+  outline: none !important;
+  border: none !important;
+}
+
+*:active{
+  outline: none !important;
+  border: none !important;
+}
+
+.btn-blue{
+  color: #fff;
+  background-color: #026880;
+}
+
+@media (min-width: 2400px) {
+  .container {
+    max-width: 85%;
+  }
+
+  * {
+    font-size: 50px !important;
+  }
+}
+
+
+
+@media only screen and (min-width: 1200px) and (max-width: 1400px) {
+
+  .banner{
+    position: fixed !important;
+    z-index: 100;
+  }
+
+}

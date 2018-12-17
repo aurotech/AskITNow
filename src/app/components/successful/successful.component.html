@@ -1,0 +1,11 @@
+<app-banner></app-banner>
+<div class="jumbotron">
+  <div class="text-center">
+    <h1>Hello</h1>
+    <h1> {{result.name.toUpperCase()}}</h1>
+    <p>Your request was successfully submitted.</p>
+    <p *ngIf="result.wait_time">Your Estimated wait time is: <span> <h3 style="color: #ffaa00;">{{ result.wait_time | minutesPipe}}</h3></span></p>
+    <p *ngIf="!result.wait_time"><span> <h3 style="color: #ffa700;">Please proceed to Kiosk</h3></span></p>
+  </div>
+  <!--<a class="btn btn-primary btn-sm" routerLink="">back</a>-->
+</div>

@@ -1,0 +1,116 @@
+<app-banner></app-banner>
+<p-growl [(value)]="msg" [life]="5000"></p-growl>
+
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" width="450"></p-confirmDialog>
+
+<p-dialog header="Please add your message below:" [(visible)]="display" [width]="500">
+  <div>
+    <p-header>
+      <textarea required maxlength="255" name="announcement_text" ngModel [(ngModel)]="newMessage" class="form-control mb-2" rows="10"></textarea>
+    </p-header>
+    <div class="float-right">
+      <button type="button" class="btn btn-secondary m-2" (click)="display=false">Close</button>
+      <button type="submit" class="btn btn-primary" (click)="Announcement()">Announce</button>
+    </div>
+  </div>
+</p-dialog>
+
+<p-dialog header="Please choose your duration below:" [(visible)]="display2" [width]="500" [height]="150">
+  <div style="height: 250px">
+    <p-header>
+      <p-dropdown required name="duration" [options]="durations" [(ngModel)]="selectedDuration"></p-dropdown>
+      <button
+        type="submit"
+        class="float-right btn btn-primary btn-sm"
+        (click)="onStop(selectedDuration)"
+        [disabled]="!selectedDuration"
+      >
+        Submit
+      </button>
+    </p-header>
+  </div>
+</p-dialog>
+
+<div class="container">
+  <div>
+    <div class=" content margin-bottom">
+      <div class="header">
+        <h3 class="heading">AskIT Now Kiosk</h3>
+      </div>
+      <hr>
+      <div class="form-group">
+        <div class="text-middle">
+          <p>Welcome {{technicianName | uppercase}}!!</p>
+          <p-dropdown [options]="actions" [(ngModel)]="selectedAction" (onChange)="change($event.value)"></p-dropdown>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="technicianId && totalTickets;else other_content">
+    <table class="table table-bordered margin-bottom">
+      <thead class="thead">
+      <tr>
+        <th >#</th>
+        <th >Name</th>
+        <th  >Issue</th>
+        <th  >Valid Until</th>
+        <th  >Technician</th>
+        <th style="width: 15%;" *ngIf="!ticketsResolved">Active</th>
+        <th style="width: 15%;" *ngIf="ticketsResolved">Resolved</th>
+      </tr>
+      </thead>
+      <ng-container *ngFor="let t of totalTickets | reslovedPipe:ticketsResolved ">
+        <tbody>
+        <tr>
+          <td>{{t.ticket}}</td>
+          <td>{{t.name | uppercase}}</td>
+          <td>
+            {{t.category | slice:0:25}}...
+            <br>
+            <div *ngIf="t.comment">
+              <p-overlayPanel #op>
+                {{t.comment}}
+              </p-overlayPanel>
+              <button class="btn btn-round btn-sm" (click)="op.toggle($event)">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+
+          </td>
+          <td>{{t.valid_until}}</td>
+          <td>{{t.technician}}</td>
+          <td>
+            <div *ngIf="!t.is_accepted && !t.is_resolved;then thenTemplate1"></div>
+            <ng-template #thenTemplate1>
+              <button class="btn btn-warning" (click)="onAccept($event,t)">Accept</button>
+              <button
+                type="button"
+                class="btn btn-default btn-trash"
+                aria-label="center Align"
+                (click)="clearTicket(t)">
+                <i class="far fa-trash-alt"></i>
+              </button>
+            </ng-template>
+
+            <div *ngIf="t.is_accepted && !t.is_resolved;then thenTemplate2"></div>
+            <ng-template #thenTemplate2>
+              <button class="btn btn-danger" (click)="onAccept($event,t)">Undo</button>
+              <button class="btn btn-success" (click)="onResolve($event,t)">Resolve</button>
+            </ng-template>
+
+            <div *ngIf="t.is_resolved;then thenTemplate3"></div>
+            <ng-template #thenTemplate3>
+              <button class="btn btn-secondary" (click)="onResolve($event,t)">Edit</button>
+            </ng-template>
+          </td>
+        </tr>
+        </tbody>
+      </ng-container>
+    </table>
+  </div>
+  <ng-template #other_content >
+    <p class="heading">
+      No tickets were created.
+    </p>
+  </ng-template>
+</div>

@@ -1,0 +1,68 @@
+.background-container{
+  position: relative;
+  height: 100vh;
+}
+
+.background-container-body{
+  position: absolute;
+  width: 690px;
+  /*height: 400px;*/
+  /*background-size: cover;*/
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.btn-raised{
+  text-align: center !important;
+  margin-top: -170px;
+}
+
+.link{
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.background-img{
+  /*width: 100%;*/
+  height: 400px;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  background-position: center;
+  background-size: 100%;
+}
+
+.center-btn {
+  position: absolute;
+  opacity: 0;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  animation: 1s slide-up .5s forwards;
+}
+
+
+
+.btn-blue:hover{
+  background-color: #0287a6;
+}
+
+/*ORIGINAL POSITION LAPTOP*/
+@keyframes slide-up {
+  0%{
+    top:65%;
+    left:50%;
+    opacity: .5;
+  }
+
+  100%{
+    top: 60%;
+    left: 50%;
+    opacity: 1;
+  }
+}
+
+
+

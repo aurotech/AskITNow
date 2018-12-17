@@ -1,0 +1,15 @@
+<div class="background-container">
+  <div class="background-container-body">
+    <img src="assets/images/ask_it.jpg" alt="ASK IT NOW HOME">
+    <!--<div class="background-img" style="background-image: url('assets/images/ask_it.jpg')"></div>-->
+    <div style="text-align: center">
+      <h5 *ngIf="noTech">{{message}}</h5>
+      <button class="btn btn-blue btn-raised" [disabled]="noTech" (click)="onClick()">
+        Touch here to begin
+      </button>
+    </div>
+  </div>
+</div>
+<div>
+</div>
+

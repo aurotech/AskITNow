@@ -1,0 +1,157 @@
+.heading{
+  padding: 15px 15px 0px 5px;
+  text-align: center;
+  color: #026880;
+  font-size: 22px;
+  font-weight: 600;
+
+}
+.content{
+  width: 50%;
+  /*text-align: center;*/
+  color: #026880;
+  margin: 0 auto;
+}
+
+.font-lg *{
+  font-size: 23px;
+}
+
+
+.form-group, form{
+  color: #026880;
+  margin: 5px;
+}
+
+button,a{
+  width: 48%;
+  color: #fff;
+  margin-left: 5px;
+}
+
+
+button a{
+  text-decoration: none;
+  color:#fff;
+}
+
+.dropdown-menu .active a{
+  text-decoration: none;
+}
+
+.dropdown-menu .active a:hover {
+  background: #026880;
+  color: #fff;
+}
+
+.btn-gray {
+
+  background-color: #777777;
+}
+
+.btn-block{
+  padding: 5px;
+}
+
+.btn-gray:hover{
+  background-color: #9b9d9d;
+}
+
+.btn-blue{
+  background-color: #026880;
+}
+
+.btn-a{
+  color: #fff;
+  background-color: #026880;;
+}
+
+.btn-blue:hover{
+  background-color: #0287a6;
+}
+
+@media only screen and (min-width: 599px) and (max-width: 780px) {
+
+  .content{
+    width: 80%;
+    /*text-align: center;*/
+    color: #026880;
+    margin: 0 auto;
+  }
+
+  button,a{
+    width: 46%;
+    color: #fff;
+    margin-left: 5px;
+  }
+}
+
+
+
+@media only screen and (min-width: 900px) and (max-width: 1200px) {
+
+  .content{
+    width: 80%;
+    /*text-align: center;*/
+    color: #026880;
+    margin: 0 auto;
+  }
+
+  button,a{
+    margin-top: 20px;
+    width: 48%;
+    color: #fff;
+    margin-left: 5px;
+  }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1400px) {
+
+  .content{
+    width: 59%;
+    color: #026880;
+    margin: 0 auto;
+    font-size: 1.8rem;
+    position: absolute;
+    top: 100px;
+    left: 20%;
+  }
+
+  .heading{
+    font-size: 37px;
+  }
+
+  .form-group {
+    font-size: 1.8rem;
+  }
+
+  .form-control{
+    padding: 18px;
+  }
+
+  button,a{
+    margin-top: 20px;
+    width: 48%;
+    color: #fff;
+    margin-left: 5px;
+    font-size: 1.8rem;
+  }
+}
+
+/*@media only screen and (max-width: 1800px) {*/
+
+  /*.content{*/
+    /*width: 80%;*/
+    /*!*text-align: center;*!*/
+    /*color: #026880;*/
+    /*margin: 0 auto;*/
+  /*}*/
+
+  /*button,a{*/
+    /*margin-top: 20px;*/
+    /*width: 48%;*/
+    /*color: #fff;*/
+    /*margin-left: 5px;*/
+  /*}*/
+/*}*/
+

@@ -1,0 +1,31 @@
+<app-banner></app-banner>
+<div class="container">
+  <div class=" content">
+    <div class="header">
+      <h3 class="heading">AskIT Now Kiosk</h3>
+    </div>
+    <hr>
+    <p style="text-align:center; color:#b20000;">Please login to serve your customers.</p>
+    <form class="form" #form="ngForm" (ngSubmit)="onSubmit(form)" action="http://localhost:4200/queue" method="POST">
+      <div class="alert alert-danger" *ngIf="loginFail">
+        Username or Password is incorrect.
+      </div>
+      <div class="form-group">
+        <label for="username">Username*</label>
+        <input required name="username" ngModel #u="ngModel" type="text" class="form-control" id="username">
+        <div class="alert alert-danger" *ngIf="u.touched && !u.valid">Username is required</div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password *</label>
+        <input required name="password" ngModel #p="ngModel" type="password" class="form-control" id="password">
+        <div class="alert alert-danger" *ngIf="p.touched && !p.valid">Password is required</div>
+      </div>
+
+      <div class="btn-block">
+        <button type="button" (click)="reset(form)" class=" btn btn-gray">Clear</button>
+        <button type="submit" [disabled]="!form.form.valid" class="btn btn-blue">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

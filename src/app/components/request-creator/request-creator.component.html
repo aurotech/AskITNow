@@ -1,0 +1,71 @@
+<app-banner></app-banner>
+<div class="container">
+  <div class=" content">
+    <div class="header">
+      <h3 class="heading">AskIT Now Kiosk</h3>
+    </div>
+    <hr>
+    <p style="text-align:center; color:#b20000;">Enter your information below to get in line.</p>
+    <form class="form font-lg" #form="ngForm" (ngSubmit)="onSubmit(form)">
+      <div class="form-group">
+        <label for="first_name">First Name*</label>
+        <input required name="first_name" #fn="ngModel" ngModel type="text" class="form-control" id="first_name">
+        <div class="alert alert-danger" *ngIf="fn.touched && !fn.valid">First Name is required</div>
+      </div>
+
+      <div class="form-group">
+        <label for="last_name">Last Name*</label>
+        <input required name="last_name" ngModel #ln="ngModel" type="text" class="form-control" id="last_name">
+        <div class="alert alert-danger" *ngIf="ln.touched && !ln.valid">Last Name is required</div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address*</label>
+        <div class="input-group">
+          <input
+            required
+            pInputText
+            pattern="^[A-Za-z-]+\.[A-Za-z-]+[0-9]*$"
+            name="email"
+            ngModel
+            #email="ngModel"
+            type="text"
+            class="form-control"
+            id="email"
+          >
+          <div class="input-group-append">
+            <span class="input-group-text">@fda.hhs.gov</span>
+          </div>
+        </div>
+        <div [hidden]="email.valid || email.untouched">
+          <div class="alert alert-danger" *ngIf="email.errors && email.errors.required">
+            Email is required cannot be blank.
+          </div>
+          <div class="alert alert-danger" *ngIf="email.errors && email.errors.pattern">
+            Enter a valid FDA email upto domain part.
+          </div>
+        </div>
+      </div>
+
+      <!--<div class="input-group mb-3">-->
+        <!--<input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">-->
+        <!--<div class="input-group-append">-->
+          <!--<span class="input-group-text" id="email">@example.com</span>-->
+        <!--</div>-->
+      <!--</div>-->
+
+      <div class="form-group">
+        <label for="categories">Issue Category*</label>
+        <p-dropdown id="categories" [options]="categories" name="category_id" [(ngModel)]="userCategory" [style]="{'width':'100%'}"></p-dropdown>
+      </div>
+      <div class="form-group">
+        <label for="comment" >Add Comment (optional)</label>
+        <textarea name="questions" ngModel id="comment" class="form-control" rows="3"></textarea>
+      </div>
+      <div class="btn-block">
+        <button type="button" (click)="reset(form)" class=" btn btn-gray">Clear</button>
+        <button type="submit" [disabled]="!form.valid" class="btn btn-blue">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

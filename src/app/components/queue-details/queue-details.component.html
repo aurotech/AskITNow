@@ -1,0 +1,68 @@
+<app-banner></app-banner>
+<div class="container">
+  <div class=" content">
+    <div>
+      <h1 class="heading">AskIT Now Kiosk</h1>
+    </div>
+    <hr>
+    <div class="content-body" *ngIf="state.visible">
+        <div style="display:flex;justify-content: space-between">
+          <p class="timer-head">Estimated Wait Time: <strong class="timer-content">{{ totalWaitTime | minutesPipe }}</strong></p>
+          <p *ngIf="totalWaitTime "></p>
+          <p class="timer-head">Current Time: <strong class="timer-content">{{ myDate | date:' h:mm:ss a' }}</strong></p>
+        </div>
+      <div style="text-align: center"
+           class="alert alert-danger"
+           id="success-alert"
+           *ngIf="message">
+        <button type="button" class="close" data-dismiss="alert" >x</button>
+        <h3>
+          {{message}}
+          <br><span style="font-size: 12px; display: block">{{time}}</span>
+        </h3>
+      </div>
+      <ngx-flash-messages></ngx-flash-messages>
+      <div class="table-responsive-md" >
+          <table class="table">
+            <thead class="thead">
+            <tr>
+              <th scope="col">Position In Line</th>
+              <!--<th scope="col">Ticket Number</th>-->
+              <th scope="col">Name</th>
+              <th scope="col">Estimated Wait Time</th>
+            </tr>
+            </thead>
+            <ng-container>
+              <tbody>
+              <tr *ngFor="let t of waitTimeDetails;let i = index" [attr.data-index]="i">
+                <th scope="row">{{i+1}}</th>
+                <th scope="row">{{t.name.toUpperCase()}}</th>
+
+                <td [ngClass]=
+                    "{'bg-green': t.wait_time || t.wait_time <=0,
+                      'bg-yellow': (t.wait_time) >0 && (t.wait_time) <=25,
+                      'bg-orange': (t.wait_time) >25 && (t.wait_time) <=50,
+                      'bg-red': (t.wait_time) >50 }"
+                >
+                  {{t.wait_time | minutesPipe}}
+                </td>
+              </tr>
+              </tbody>
+            </ng-container>
+          </table>
+        </div>
+    </div>
+    <div *ngIf="state.no_tech;then thenTemplate1"></div>
+    <ng-template #thenTemplate1>
+      <div style="text-align: center" class="alert alert-heading">
+        <strong>No technicians available at this moment. Please check later.</strong>
+      </div>
+    </ng-template>
+    <div *ngIf="state.no_tickets;then thenTemplate2"></div>
+    <ng-template #thenTemplate2>
+      <div style="text-align: center" class="alert alert-heading">
+        <strong>No tickets are in the queue.</strong>
+      </div>
+    </ng-template>
+  </div>
+</div>
