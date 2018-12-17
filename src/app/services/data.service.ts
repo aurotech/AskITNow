@@ -9,6 +9,7 @@ import {timer} from "rxjs/observable/timer";
 @Injectable()
 export class DataService {
   successMessage;
+  oldIP = '52-202-126-186';
 
   constructor( private http: Http, private router: Router) { }
 
