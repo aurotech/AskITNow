@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DataService} from "../../services/data.service";
 import {Router} from "@angular/router";
+import {Ng4LoadingSpinnerService} from "ng4-loading-spinner";
 
 @Component({
   selector: 'app-home',
@@ -14,18 +15,25 @@ export class HomeComponent implements OnInit {
 
   constructor(
     public data: DataService,
-    public router: Router
+    public router: Router,
+    public spinner: Ng4LoadingSpinnerService
   ) { }
 
   ngOnInit() {
-    this.data.checkForPotentialWaitTime()
-      .subscribe(res => {
-        const result = res.json();
-        (result < 0) ? this.noTech = true : null;
-      });
+    this.checkTechAvailability();
   }
 
-  onClick(){
+checkTechAvailability() {
+    this.spinner.show();
+  this.data.checkForPotentialWaitTime()
+    .subscribe(res => {
+      this.spinner.hide();
+      const result = res.json();
+      (result < 0) ? this.noTech = true : null;
+    });
+}
+
+  onClick() {
     this.router.navigate(['/createarequest']);
   }
 

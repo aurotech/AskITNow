@@ -1,3 +1,7 @@
+import {server} from "../server";
+
 export const environment = {
-  production: true
+  production: true,
+  ip: server.url
+
 };

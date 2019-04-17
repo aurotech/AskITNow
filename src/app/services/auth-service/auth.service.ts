@@ -3,12 +3,15 @@ import {Http} from "@angular/http";
 import {DataService} from "../data.service";
 import {Router} from '@angular/router';
 import {Ng4LoadingSpinnerService} from "ng4-loading-spinner";
+import {environment} from "../../../environments/environment";
 
 @Injectable()
 export class AuthService {
   technicianId;
   technicianName;
   online;
+  ip = environment.ip;
+
 
   constructor(
 
@@ -19,15 +22,14 @@ export class AuthService {
   ) { }
 
   login(data) {
-    this.spinner.show();
     return this.http.post('http://ec2-52-202-126-186.compute-1.amazonaws.com:8080/app1/loginIn', data)
       .map(res => {
         const result = res.json();
-        const name = result.name.replace(/^"(.*)"$/, '$1');
         if (result.is_login) {
+          const name = result.name.replace(/^"(.*)"$/, '$1');
+
           localStorage.setItem('id', JSON.stringify(result.id));
           localStorage.setItem('name', name);
-          this.spinner.hide();
           return true;
         } else {
           return false;

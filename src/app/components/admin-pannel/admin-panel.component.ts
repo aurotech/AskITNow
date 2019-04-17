@@ -120,10 +120,12 @@ export class AdminPanelComponent implements OnInit {
       this.selectedAction = '';
       this.actions.splice(1, 1, {label: 'Show Resolved', value: 'Resolved'});
     } else if (value === 'Logout') {
+      localStorage.clear();
+      this.router.navigate(['/login']);
       this.data.logoutCheck({technician_id: this.technicianId})
         .subscribe(res => {
-          this.router.navigate(['/login']);
           localStorage.clear();
+          this.router.navigate(['/login']);
         });
     }
   }

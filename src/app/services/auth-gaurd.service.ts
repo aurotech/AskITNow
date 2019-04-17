@@ -15,11 +15,9 @@ export class AuthGaurdService implements CanActivate {
     private http: Http,
     private data: DataService,
     private router: Router,
-    private spinner: Ng4LoadingSpinnerService,
   ) { }
 
   login(data) {
-    this.spinner.show();
     this.data.loginCheck(data)
       .subscribe(res => {
       const id = res.id;
@@ -27,8 +25,6 @@ export class AuthGaurdService implements CanActivate {
       if (res.is_login) {
         localStorage.setItem('id', JSON.stringify(id));
         localStorage.setItem('name', name);
-        this.router.navigate(['/admin']);
-        this.spinner.hide();
         return true;
       }
       return false;

@@ -19,9 +19,10 @@ export class RequestCreatorComponent {
     private data: DataService,
     private spinner: Ng4LoadingSpinnerService,
   ) {
-
+    // this.spinner.show();
     this.data.getCategories()
       .subscribe(results => {
+        this.spinner.hide();
         results.forEach((c) => {
           this.categories.push({label: c['category'], value: c['order']});
         });

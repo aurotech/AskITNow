@@ -3,7 +3,10 @@
     <img src="assets/images/ask_it.jpg" alt="ASK IT NOW HOME">
     <!--<div class="background-img" style="background-image: url('assets/images/ask_it.jpg')"></div>-->
     <div style="text-align: center">
-      <h5 *ngIf="noTech">{{message}}</h5>
+      <h5 *ngIf="noTech; else defaultMessage">{{message}}</h5>
+      <ng-template #defaultMessage>
+        <h5>Waiting for the server to respond.</h5>
+      </ng-template>
       <button class="btn btn-blue btn-raised" [disabled]="noTech" (click)="onClick()">
         Touch here to begin
       </button>

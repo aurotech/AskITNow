@@ -32,7 +32,6 @@ import {InputTextModule} from 'primeng/inputtext';
 import {DialogModule} from 'primeng/dialog';
 import { AuthGaurdService } from './services/auth-gaurd.service';
 import { AuthService } from './services/auth-service/auth.service';
-import { WebSocketService } from './services/web-socket-service/web-socket.service';
 import { ReslovedPipe } from './pipes/resloved.pipe';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
 
@@ -76,7 +75,7 @@ import {OverlayPanelModule} from 'primeng/overlaypanel';
       {path: 'queue', component: QueueDetailsComponent},
     ])
   ],
-  providers: [DataService, {provide: LocationStrategy, useClass: HashLocationStrategy}, ConfirmationService, AuthGaurdService, AuthService, WebSocketService],
+  providers: [DataService, {provide: LocationStrategy, useClass: HashLocationStrategy}, ConfirmationService, AuthGaurdService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

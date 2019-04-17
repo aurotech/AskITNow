@@ -4,34 +4,36 @@ import {Router} from '@angular/router';
 import 'rxjs/add/operator/map';
 import {flatMap} from "rxjs/operators";
 import {timer} from "rxjs/observable/timer";
+import {environment} from "../../environments/environment";
 
 
 @Injectable()
 export class DataService {
   successMessage;
   oldIP = '52-202-126-186';
+  url = environment.ip;
 
   constructor( private http: Http, private router: Router) { }
 
   getCategories() {
-    return this.http.get('http://ec2-10-192-49-9.compute-1.amazonaws.com:8080/app1/getCategories').
+    return this.http.get(`${this.url}/getCategories`).
       map(res => res.json());
   }
 
   getWaitTime() {
-    return this.http.get('http://ec2-10-192-49-9.compute-1.amazonaws.com:8080/app1/showTickets').
+    return this.http.get(`${this.url}/showTickets`).
     map(res => res.json());
   }
 
   getWaitTimeForCustomers() {
     return timer(0, 5000).pipe(flatMap(() => {
-        return this.http.get('http://ec2-10-192-49-9.compute-1.amazonaws.com:8080/app1/notStartTickets').
+        return this.http.get(`${this.url}/notStartTickets`).
         map(res => res.json());
       }));
   }
 
   createTicket(obj) {
-    return this.http.post('http://ec2-10-192-49-9.compute-1.amazonaws.com:8080/app1/createTicket', obj).
+    return this.http.post(`${this.url}/createTicket`, obj).
     map((res) => {
       res.json();
       this.successMessage = res.json();
@@ -40,7 +42,7 @@ export class DataService {
   }
 
   createTicketByAdmin(obj) {
-    return this.http.post('http://ec2-10-192-49-9.compute-1.amazonaws.com:8080/app1/createTicket', obj).
+    return this.http.post(`${this.url}/createTicket`, obj).
     map((res) => {
       res.json();
       this.successMessage = res.json();
@@ -48,62 +50,62 @@ export class DataService {
   }
 
   loginCheck(obj) {
-    return this.http.post('http://ec2-10-192-49-9.compute-1.amazonaws.com:8080/app1/loginIn', obj).
+    return this.http.post(`${this.url}/loginIn`, obj).
     map(res => res.json());
   }
 
   logoutCheck(obj) {
-    return this.http.post(`http://ec2-10-192-49-9.compute-1.amazonaws.com:8080/app1/logout/`, obj)
+    return this.http.post(`${this.url}/logout/`, obj);
   }
 
   acceptTicket(obj) {
-    return this.http.put(`http://ec2-10-192-49-9.compute-1.amazonaws.com:8080/app1/acceptTicket/`, obj);
+    return this.http.put(`${this.url}/acceptTicket/`, obj);
   }
 
   unacceptTicket(obj) {
-    return this.http.put(`http://ec2-10-192-49-9.compute-1.amazonaws.com:8080/app1/undoAcceptTicket/`, obj);
+    return this.http.put(`${this.url}/undoAcceptTicket/`, obj);
   }
 
   resolveTicket(obj) {
-    return this.http.put(`http://ec2-10-192-49-9.compute-1.amazonaws.com:8080/app1/resolveTicket/`, obj);
+    return this.http.put(`${this.url}/resolveTicket/`, obj);
   }
 
   unresolveTicket(obj) {
-    return this.http.put(`http://ec2-10-192-49-9.compute-1.amazonaws.com:8080/app1/undoResolveTicket/`, obj);
+    return this.http.put(`${this.url}/undoResolveTicket/`, obj);
   }
 
   tempStop(obj) {
-    return this.http.put(`http://ec2-10-192-49-9.compute-1.amazonaws.com:8080/app1/temporaryStop`, obj);
+    return this.http.put(`${this.url}/temporaryStop`, obj);
 
   }
 
   undoStop(obj) {
-    return this.http.post(`http://ec2-10-192-49-9.compute-1.amazonaws.com:8080/app1/continueWork`, obj);
+    return this.http.post(`${this.url}/continueWork`, obj);
 
   }
 
   clearTicket(obj) {
-    return this.http.put(`http://ec2-10-192-49-9.compute-1.amazonaws.com:8080/app1/clearTicket/`, obj);
+    return this.http.put(`${this.url}/clearTicket/`, obj);
   }
 
   undoclearTicket(obj) {
-    return this.http.put(`http://ec2-10-192-49-9.compute-1.amazonaws.com:8080/app1/undoClearTicket/`, obj);
+    return this.http.put(`${this.url}/undoClearTicket/`, obj);
   }
 
   postAnnouncement(obj) {
-    return this.http.post(`http://ec2-10-192-49-9.compute-1.amazonaws.com:8080/app1/postAnnouncement/`, obj)
+    return this.http.post(`${this.url}/postAnnouncement/`, obj);
   }
 
   getAnnouncement() {
-    return this.http.get(`http://ec2-10-192-49-9.compute-1.amazonaws.com:8080/app1/getAnnouncement/`);
+    return this.http.get(`${this.url}/getAnnouncement/`);
 
   }
 
   adminloginCheck(obj) {
-    return this.http.post(`http://ec2-10-192-49-9.compute-1.amazonaws.com:8080/app1/checkLogin`, obj);
+    return this.http.post(`${this.url}/checkLogin`, obj);
   }
   checkForPotentialWaitTime() {
-    return this.http.get(`http://ec2-10-192-49-9.compute-1.amazonaws.com:8080/app1/potentialWaitTime`);
+    return this.http.get(`${this.url}/potentialWaitTime`);
   }
 
 
