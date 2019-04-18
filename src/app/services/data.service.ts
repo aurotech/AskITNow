@@ -10,7 +10,6 @@ import {environment} from "../../environments/environment";
 @Injectable()
 export class DataService {
   successMessage;
-  oldIP = '52-202-126-186';
   url = environment.ip;
 
   constructor( private http: Http, private router: Router) { }
@@ -76,12 +75,10 @@ export class DataService {
 
   tempStop(obj) {
     return this.http.put(`${this.url}/temporaryStop`, obj);
-
   }
 
   undoStop(obj) {
     return this.http.post(`${this.url}/continueWork`, obj);
-
   }
 
   clearTicket(obj) {
@@ -98,7 +95,6 @@ export class DataService {
 
   getAnnouncement() {
     return this.http.get(`${this.url}/getAnnouncement/`);
-
   }
 
   adminloginCheck(obj) {

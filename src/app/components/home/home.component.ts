@@ -25,12 +25,12 @@ export class HomeComponent implements OnInit {
 
 checkTechAvailability() {
     this.spinner.show();
-  this.data.checkForPotentialWaitTime()
-    .subscribe(res => {
-      this.spinner.hide();
-      const result = res.json();
-      (result < 0) ? this.noTech = true : null;
-    });
+    this.data.checkForPotentialWaitTime()
+      .subscribe(res => {
+        this.spinner.hide();
+        const result = res.json();
+        (result < 0) ? this.noTech = true : null;
+      });
 }
 
   onClick() {
