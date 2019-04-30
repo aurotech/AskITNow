@@ -1,7 +1,7 @@
 <app-banner></app-banner>
 <p-growl [(value)]="msg" [life]="5000"></p-growl>
 
-<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" width="450"></p-confirmDialog>
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" width="450" [closable]="false"></p-confirmDialog>
 
 <p-dialog header="Please add your message below:" [(visible)]="display" [width]="500">
   <div>

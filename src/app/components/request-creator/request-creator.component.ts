@@ -19,7 +19,7 @@ export class RequestCreatorComponent {
     private data: DataService,
     private spinner: Ng4LoadingSpinnerService,
   ) {
-    // this.spinner.show();
+    this.spinner.show();
     this.data.getCategories()
       .subscribe(results => {
         this.spinner.hide();

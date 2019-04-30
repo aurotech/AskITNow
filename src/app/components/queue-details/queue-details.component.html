@@ -3,13 +3,14 @@
   <div class=" content">
     <div>
       <h1 class="heading">AskIT Now Kiosk</h1>
+      <p class="timer-head" style="text-align: center">Current Time: <strong class="timer-content">{{ myDate | date:' h:mm:ss a' }}</strong></p>
+
     </div>
     <hr>
     <div class="content-body" *ngIf="state.visible">
-        <div style="display:flex;justify-content: space-between">
-          <p class="timer-head">Estimated Wait Time: <strong class="timer-content">{{ totalWaitTime | minutesPipe }}</strong></p>
+        <div >
+          <p class="timer-head" style="text-align: center">Estimated Wait Time: <strong class="timer-content">{{ totalWaitTime | minutesPipe }}</strong></p>
           <p *ngIf="totalWaitTime "></p>
-          <p class="timer-head">Current Time: <strong class="timer-content">{{ myDate | date:' h:mm:ss a' }}</strong></p>
         </div>
       <div style="text-align: center"
            class="alert alert-danger"
@@ -22,11 +23,11 @@
         </h3>
       </div>
       <ngx-flash-messages></ngx-flash-messages>
-      <div class="table-responsive-md" >
+      <div class="table-responsive" >
           <table class="table">
             <thead class="thead">
             <tr>
-              <th scope="col">Position In Line</th>
+              <th scope="col">#</th>
               <!--<th scope="col">Ticket Number</th>-->
               <th scope="col">Name</th>
               <th scope="col">Estimated Wait Time</th>

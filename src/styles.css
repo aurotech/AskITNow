@@ -33,6 +33,17 @@ body{
   }
 }
 
+@media (min-width: 600px) {
+  .container {
+    max-width: 90%;
+  }
+
+  table .thead * {
+    font-size: 18px !important;
+  }
+
+}
+
 
 
 /*@media only screen and (min-width: 1200px) and (max-width: 1400px) {*/

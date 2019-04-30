@@ -39,10 +39,10 @@
         </div>
         <div [hidden]="email.valid || email.untouched">
           <div class="alert alert-danger" *ngIf="email.errors && email.errors.required">
-            Email is required cannot be blank.
+            Email is required. It cannot be left blank.
           </div>
           <div class="alert alert-danger" *ngIf="email.errors && email.errors.pattern">
-            Enter a valid FDA email upto domain part.
+            Enter a valid FDA email up-to domain part.
           </div>
         </div>
       </div>

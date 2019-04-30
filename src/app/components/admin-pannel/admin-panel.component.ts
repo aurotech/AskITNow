@@ -36,7 +36,7 @@ export class AdminPanelComponent implements OnInit {
     this.technicianId = this.auth.currentUser().technicianId;
     this.technicianName = this.auth.currentUser().technicianName;
 
-      const ws = new WebSocket('ws://ec2-10-192-49-9.compute-1.amazonaws.com:8080/update_admin_view/');
+      const ws = new WebSocket('ws://ec2-52-202-126-186.compute-1.amazonaws.com:8080/update_admin_view/');
       ws.onopen = () => console.warn('Listening to WebSocket...');
       ws.onclose = () =>  console.log('WS closed...');
         // window.location.reload()
@@ -54,7 +54,6 @@ export class AdminPanelComponent implements OnInit {
           if (newTicketFound) this.totalTickets.push(res);
         } else {
           this.totalTickets = res;
-          console.log(res);
         }
       };
     }
@@ -70,7 +69,7 @@ export class AdminPanelComponent implements OnInit {
     ];
 
     this.durations = [
-      {label: 'Options', value: null},
+      {label: 'Select Duration', value: null},
       {label: '5 Min', value: '5'},
       {label: '10 Min', value: '10'},
       {label: '15 Min', value: '15'},
@@ -104,12 +103,13 @@ export class AdminPanelComponent implements OnInit {
       this.display = true;
       this.selectedAction = '';
 
-    } else if (value === 'Create Ticket') {
+    } else if (value === 'Admin Actions') {
+      this.ticketsResolved = false;
+    }else if (value === 'Create Ticket') {
       this.router.navigate(['/adminticket']);
     } else if (value === 'Temporary Stoppage') {
-      this.ticketsResolved = true;
+      this.display2 = true;
       this.selectedAction = '';
-
     } else if (value === 'Resolved') {
       this.ticketsResolved = true;
       this.selectedAction = '';
@@ -119,8 +119,7 @@ export class AdminPanelComponent implements OnInit {
       this.ticketsResolved = false;
       this.selectedAction = '';
       this.actions.splice(1, 1, {label: 'Show Resolved', value: 'Resolved'});
-    } else if (value === 'Logout') {
-      localStorage.clear();
+    }  else if (value === 'Logout') {
       this.router.navigate(['/login']);
       this.data.logoutCheck({technician_id: this.technicianId})
         .subscribe(res => {
