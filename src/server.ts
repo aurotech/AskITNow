@@ -1,4 +1,4 @@
 
 export const server = {
-  url: 'http://ec2-52-202-126-186.compute-1.amazonaws.com:8080/app1'
+  url: 'http://ec2-34-227-87-196.compute-1.amazonaws.com:8080/app1'
 };
